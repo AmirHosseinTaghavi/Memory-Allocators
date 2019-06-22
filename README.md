@@ -4,19 +4,19 @@
 
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so
 
-make
+gcc test_jemalloc.c -o test_jemalloc
 
 ## memkind:
 
 sudo echo 55 > /proc/sys/vm/nr_hugepages
 
-make
+gcc -o test_memkind test_memkind.c -lmemkind
 
 ## tcmalloc:
 
 export LD_PRELOAD=/usr/lib/libtcmalloc_minimal.so.4
 
-make
+gcc -o test_tcmalloc test_tcmalloc.c
 
 ## tcmalloc+hugepage:
 
@@ -30,10 +30,10 @@ mount -t hugetlbfs none /mnt/huge/
 
 export TCMALLOC_MEMFS_MALLOC_PATH=/mnt/huge/
 
-make
+gcc -o test_tcmalloc test_tcmalloc.c
 
 ## ptmalloc:
 
-make
+gcc -o test_ptmalloc test_ptmalloc.c
 
 it's default.
