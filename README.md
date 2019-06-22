@@ -2,7 +2,7 @@
 
 ## jemalloc:
 
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so
+export LD_PRELOAD=/usr/local/lib/libjemalloc.so
 
 gcc test_jemalloc.c -o test_jemalloc
 
@@ -14,7 +14,7 @@ gcc -o test_memkind test_memkind.c -lmemkind
 
 ## tcmalloc:
 
-export LD_PRELOAD=/usr/lib/libtcmalloc_minimal.so.4
+export LD_PRELOAD=/usr/local/lib/libtcmalloc_minimal.so.4
 
 gcc -o test_tcmalloc test_tcmalloc.c
 
@@ -22,7 +22,7 @@ gcc -o test_tcmalloc test_tcmalloc.c
 
 sudo su
 
-export LD_PRELOAD=/usr/lib/libtcmalloc_minimal.so.4
+export LD_PRELOAD=/usr/local/lib/libtcmalloc_minimal.so.4
 
 echo 55 > /proc/sys/vm/nr_hugepages
 
