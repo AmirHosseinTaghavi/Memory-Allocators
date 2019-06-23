@@ -4,26 +4,33 @@
 #include <time.h>
 #include <memkind.h>
 	 
-#define NALLOCATIONS 334
-/// objbytes 3000 kb
-// run with ./test_memkind_one 3000
+// objbytes 3000 kb
+// number of allocations 334
+// ./test_memkind_one allocations_number object_size
+// run with ./test_memkind_one 334 3000
 
 int main(int argc, char* argv[]){
 	// in kb
-	int object_size = atoi(argv[1]);
+	int alloc_num = atoi(argv[1]);
+	int object_size = atoi(argv[2]);
+
+	FILE* fp = fopen("/proc/sys/vm/nr_hugepages", "w");
+	int hugepage_nums = ((alloc_num * object_size) / 1000) / 2 + 1;
+	fprintf(fp, "%d", hugepage_nums);
 
 	clock_t begin = clock();
-	int* allocs[NALLOCATIONS];
-	for(int i=0; i<NALLOCATIONS; i++){
+	int* allocs[alloc_num];
+	for(int i=0; i<alloc_num; i++){
 		// memory allocation
 		allocs[i] = (int*) memkind_malloc(MEMKIND_HUGETLB, object_size*1000);
 		// memory usage
-		for(int k=0; k<750000; k++){
+		int nums_in_object = (object_size*1000) / 4;
+		for(int k=0; k<nums_in_object; k++){
 			allocs[i][k]=10;
 		}
 	}
 	// memory free
-	for(int j=0; j<NALLOCATIONS; j++){
+	for(int j=0; j<alloc_num; j++){
 		memkind_free(MEMKIND_HUGETLB, allocs[j]);
 	}
 	clock_t end = clock();
