@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <unistd.h>
-#include <time.h>
+#include <sys/time.h>
 
 void *thread_function(void *);
 
@@ -46,15 +46,18 @@ void *thread_function(void *args){
         fscanf(input_file, "%d,", &size_array[i] );
     }
     fclose(input_file);
-	
-	clock_t begin = clock();
+
+	struct timeval start, end;
+	gettimeofday(&start, NULL); 
 	for(int i=0; i<thread_allocs_count; i++){
 		// memory allocation
 		allocs[i] = (int*) malloc(size_array[i]);
 	}
-	clock_t end = clock();
-	double time_spent = (double) (end - begin) / CLOCKS_PER_SEC;
-	fprintf(fptr,"%f\n", time_spent);
+	gettimeofday(&end, NULL);
+	double time_taken; 
+    time_taken = (end.tv_sec - start.tv_sec) * 1e6; 
+    time_taken = (time_taken + (end.tv_usec - start.tv_usec)) * 1e-6; 
+	fprintf(fptr,"%f\n", time_taken);
    	fclose(fptr);
 
 	for(int i=0; i<thread_allocs_count; i++){

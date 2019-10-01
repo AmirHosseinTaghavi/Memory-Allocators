@@ -1,0 +1,61 @@
+final tests results:
+
+uniform sizes:
+	multithread:
+		count of threads = 10
+		small allocations:
+			count of allocations per thread = 50000
+			each allocation size = 10 kbyte
+			ptmalloc:
+				allocation time = 4.1106473
+			jemalloc:
+				allocation time = 0.0329378
+			tcmalloc:
+				allocation time = 0.1768943
+			tcmalloc+hugepage:
+				allocation time = 0.4672432000000001
+			memkind:
+				allocation time = 0.0407579
+		large allocations:
+			count of allocations per thread = 250
+			each allocation size = 2 mbyte
+			ptmalloc:
+				allocation time = 0.016596700000000002
+			jemalloc:
+				allocation time = 0.0036169999999999996
+			tcmalloc:
+				allocation time = 0.0131317
+			tcmalloc+hugepage:
+				allocation time = 0.0203057
+			memkind:
+				allocation time = 0.0073713
+
+	single-thread:
+		small allocations:
+			count of allocations per thread = 500000
+			each allocation size = 10 kbyte
+			ptmalloc:
+				allocation time = 0.6956450000000001
+			jemalloc:
+				allocation time = 0.1468691
+			tcmalloc:
+				allocation time = 0.5227542000000001
+			tcmalloc+hugepage:
+				allocation time = 0.4623495
+			memkind:
+				allocation time = 0.14423840000000002
+		large allocations:
+			count of allocations per thread = 2500
+			each allocation size = 2 mbyte
+			ptmalloc:
+				allocation time = 0.0095004
+			jemalloc:
+				allocation time = 0.008024299999999998
+			tcmalloc:
+				allocation time = 0.0043228
+			tcmalloc+hugepage:
+				allocation time = 0.010086699999999999
+			memkind:
+				allocation time = 0.01122
+
+
