@@ -1,15 +1,17 @@
 #!/bin/bash
 
 # arguments: thread_count, thread_allocs_count, alloc_size, exeutions_count, input_type
-# input_types: 1-> uniform
+# input_types: 1-> fixed, 2-> random
 
 export LD_PRELOAD=/usr/local/lib/libtcmalloc_minimal.so.4
 gcc -o test_tcmalloc_multithread src/test_multithread.c -lpthread
 
 truncate -s 0 src/result.txt
-truncate -s 0 src/input_sizes.txt
 
-python3 src/generate_input.py $5 $3 $2
+if [ "$5" -eq "1" ] 
+then 
+	python3 src/generate_input.py $5 $3 $2 0 
+fi
 
 for (( c=1; c<=$4; c++ ))
 do

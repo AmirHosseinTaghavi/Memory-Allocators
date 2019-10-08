@@ -49,7 +49,7 @@ void *thread_function(void *args){
     fclose(input_file);
 	
 	struct timeval start, end;
-	gettimeofday(&start, NULL); 
+	gettimeofday(&start, NULL);
 	for(int i=0; i<thread_allocs_count; i++){
 		// memory allocation
 		allocs[i] = (int*) memkind_malloc(MEMKIND_HUGETLB, size_array[i]);
@@ -60,14 +60,14 @@ void *thread_function(void *args){
     time_taken = (time_taken + (end.tv_usec - start.tv_usec)) * 1e-6; 
 	fprintf(fptr,"%f\n", time_taken);
    	fclose(fptr);
-
+ 
 	for(int i=0; i<thread_allocs_count; i++){
 		// memory usage
 		for(int k=0; k<size_array[i]/4; k++){
 			allocs[i][k]=10;
 		}
 	}
-	
+		
 	// memory free
 	for(int j=0; j<thread_allocs_count; j++){
 		memkind_free(MEMKIND_HUGETLB, allocs[j]);

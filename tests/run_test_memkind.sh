@@ -2,15 +2,17 @@
 
 # note: must run with root
 # arguments: thread_count, thread_allocs_count, alloc_size, exeutions_count, hugepages_count, input_type
-# input_types: 1-> uniform
+# input_types: 1-> fixed, 2-> random
 
 echo $5 > /proc/sys/vm/nr_hugepages
 gcc -o test_memkind_multithread src/test_memkind_multithread.c -lmemkind -lpthread
 
 truncate -s 0 src/result.txt
-truncate -s 0 src/input_sizes.txt
 
-python3 src/generate_input.py $6 $3 $2
+if [ "$6" -eq "1" ] 
+then 
+	python3 src/generate_input.py $6 $3 $2 0 
+fi
 
 for (( c=1; c<=$4; c++ ))
 do

@@ -46,9 +46,9 @@ void *thread_function(void *args){
         fscanf(input_file, "%d,", &size_array[i] );
     }
     fclose(input_file);
-
+ 
 	struct timeval start, end;
-	gettimeofday(&start, NULL); 
+	gettimeofday(&start, NULL);
 	for(int i=0; i<thread_allocs_count; i++){
 		// memory allocation
 		allocs[i] = (int*) malloc(size_array[i]);

@@ -1,0 +1,199 @@
+final tests results:
+
+fixed sizes:
+	multithread:
+		count of threads = 10
+		small allocations:
+			count of allocations per thread = 50000
+			each allocation size = 10 kbyte
+			ptmalloc:
+				allocation time = 4.11064
+				usage time = 0.76398
+				free time = 0.08058
+			jemalloc:
+				allocation time = 0.03293
+				usage time = 0.60332
+				free time = 0.00844
+			tcmalloc:
+				allocation time = 0.17689
+				usage time = 0.54406
+				free time = 0.01015
+			tcmalloc+hugepage:
+				allocation time = 0.46724
+				usage time = 0.45748
+				free time = 0.00822
+			memkind:
+				allocation time = 0.04075
+				usage time = 0.49728
+				free time = 0.00658
+		large allocations:
+			count of allocations per thread = 250
+			each allocation size = 2 mbyte
+			ptmalloc:
+				allocation time = 0.01659
+				usage time = 0.78629
+				free time = 0.03644
+			jemalloc:
+				allocation time = 0.00361
+				usage time = 0.60527
+				free time = 0.03450
+			tcmalloc:
+				allocation time = 0.01313
+				usage time = 0.60295
+				free time = 0.00011
+			tcmalloc+hugepage:
+				allocation time = 0.02030
+				usage time = 0.49617
+				free time = 0.00012
+			memkind:
+				allocation time = 0.00737
+				usage time = 0.49863
+				free time = 0.00022
+
+	single-thread:
+		small allocations:
+			count of allocations per thread = 500000
+			each allocation size = 10 kbyte
+			ptmalloc:
+				allocation time = 0.69564
+				usage time = 3.29358
+				free time = 0.17688
+			jemalloc:
+				allocation time = 0.14686
+				usage time = 3.96536
+				free time = 0.03432
+			tcmalloc:
+				allocation time = 0.52275
+				usage time = 3.28588
+				free time = 0.03203
+			tcmalloc+hugepage:
+				allocation time = 0.46234
+				usage time = 2.51284
+				free time = 0.02417
+			memkind:
+				allocation time = 0.14423
+				usage time = 2.80914
+				free time = 0.03194
+		large allocations:
+			count of allocations per thread = 2500
+			each allocation size = 2 mbyte
+			ptmalloc:
+				allocation time = 0.00950
+				usage time = 3.84685
+				free time = 0.12131
+			jemalloc:
+				allocation time = 0.00802
+				usage time = 3.87900
+				free time = 0.11617
+			tcmalloc:
+				allocation time = 0.00432
+				usage time = 3.80230
+				free time = 0.00026
+			tcmalloc+hugepage:
+				allocation time = 0.01008
+				usage time = 2.82014
+				free time = 0.00026
+			memkind:
+				allocation time = 0.01122
+				usage time = 2.81442
+				free time = 0.00051
+
+random sizes:
+	multithread:
+		count of threads = 10
+		small allocations:
+			count of allocations per thread = 50000
+			each allocation size = 0-20 kbyte
+			ptmalloc:
+				allocation time = 3.69084
+				usage time = 0.77406
+				free time = 0.05778
+			jemalloc:
+				allocation time = 0.04185
+				usage time = 0.63163
+				free time = 0.01568
+			tcmalloc:
+				allocation time = 0.16523
+				usage time = 0.56020
+				free time = 0.00807
+			tcmalloc+hugepage:
+				allocation time = 0.46271
+				usage time = 0.45848
+				free time = 0.00603
+			memkind:
+				allocation time = 0.05551
+				usage time = 0.50561
+				free time = 0.00737
+		large allocations:
+			count of allocations per thread = 250
+			each allocation size = 1-10 mbyte
+			ptmalloc:
+				allocation time = 0.01681
+				usage time = 1.96152
+				free time = 0.06854
+			jemalloc:
+				allocation time = 0.00592
+				usage time = 1.55982
+				free time = 0.07020
+			tcmalloc:
+				allocation time = 0.01544
+				usage time = 3.66117
+				free time = 0.00066
+			tcmalloc+hugepage:
+				allocation time = 0.01824
+				usage time = 1.26119
+				free time = 0.00015
+			memkind:
+				allocation time = 0.00858
+				usage time = 1.27333
+				free time = 0.00023
+
+	single-thread:
+		small allocations:
+			count of allocations per thread = 500000
+			each allocation size = 0-20 kbyte
+			ptmalloc:
+				allocation time = 0.62970
+				usage time = 3.32721
+				free time = 0.17396
+			jemalloc:
+				allocation time = 0.18276
+				usage time = 3.99863
+				free time = 0.07722
+			tcmalloc:
+				allocation time = 0.47379
+				usage time = 3.34099
+				free time = 0.03017
+			tcmalloc+hugepage:
+				allocation time = 0.47947
+				usage time = 2.50089
+				free time = 0.02333
+			memkind:
+				allocation time = 0.17949
+				usage time = 2.85983
+				free time = 0.03865
+		large allocations:
+			count of allocations per thread = 2500
+			each allocation size = 1-10 mbyte
+			ptmalloc:
+				allocation time = 0.00655
+				usage time = 13.23067
+				free time = 0.33365
+			jemalloc:
+				allocation time = 0.00396
+				usage time = 13.20462
+				free time = 0.33207
+			tcmalloc:
+				allocation time = 0.00207
+				usage time = 13.16836
+				free time = 0.07460
+			tcmalloc+hugepage:
+				allocation time = 0.01197
+				usage time = 7.90973
+				free time = 0.00059
+			memkind:
+				allocation time = 0.00956
+				usage time = 7.87585
+				free time = 0.00055
+
+
